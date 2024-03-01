@@ -8,13 +8,15 @@ public class Main {
     public static void main(String[] args){
         
         int number = getInputNumber();
-        int sum = sumOfNumbers(number);
-        System.out.println(sum);
+        System.out.println(sumOfNumbers(number));
+        System.out.println(gaussianSumOfNumbers(number));
+        getGaussianSumOfNumbersRunTime(number);
+        getSumOfNumbersRunTime(number);
+        System.out.println("Run time of SumOfNumbers is : " + getSumOfNumbersRunTime(number) +
+                            " milliseconds. Run time of GaussianSumOfNumbers is : "+ getGaussianSumOfNumbersRunTime(number)+" milliseconds.");
     }
     public static int sumOfNumbers(int n) {
-
         int sum = 0;
-
         for(int i = 1; i <= n; i++){
             sum += i;
         }
@@ -28,11 +30,23 @@ public class Main {
         return num;
     }
     // for Extra Credit
-    int gaussianSumOfNumbers(int n) {
-        return 0;
+   public static int gaussianSumOfNumbers(int n) {
+        return n*(n+1)/2;
     }
-    
-   
+
+    public static long getSumOfNumbersRunTime(int n) {
+        long startTime = System.currentTimeMillis();
+        sumOfNumbers(n);
+        long endTime = System.currentTimeMillis();
+        return endTime - startTime;
+    }
+    public static long getGaussianSumOfNumbersRunTime(int n) {
+        long startTime = System.currentTimeMillis();
+        gaussianSumOfNumbers(n);
+        long endTime = System.currentTimeMillis();
+        return endTime - startTime;
+    }
+
     // for Extra extra credit - compare the methods and show which one is faster
     // google "how to time some java code"
     // use "System.currentTimeMillis()" to ask the system what time it is.
